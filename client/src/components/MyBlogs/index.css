@@ -1,0 +1,29 @@
+.css-all-blogs-container{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap:20px
+}
+
+.css-eachBlog-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width:1px ;
+    padding:20px ;
+    gap:10px;
+    border-radius: 11px;
+}
+
+.css-edit-delete-container{
+    width: 300px;
+}
+
+.css-blog-image-itself{
+    width: 300px;
+    border-radius: 11px;
+}
