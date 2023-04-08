@@ -1,4 +1,5 @@
 const userModel = require('../models/userModel')
+const generateWebToken = require('../utils/generateToken')
 const bcrypt = require('bcrypt')
 //create user register user
 exports.registerController =async (req,res) =>{
@@ -97,6 +98,7 @@ exports.loginController = async (req,res) =>{
         return res.status(200).send({
             success:true,
             message:'Login Sucessful',
+            token:generateWebToken(user._id),
             user
         })
 

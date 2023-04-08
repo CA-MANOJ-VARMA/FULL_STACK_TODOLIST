@@ -18,7 +18,8 @@ connectDB();
 
 // rest object
 const app = express()
-
+//middleware body parser
+app.use(express.json())
 // middlewares
 app.use(cors())
 app.use(express.json())

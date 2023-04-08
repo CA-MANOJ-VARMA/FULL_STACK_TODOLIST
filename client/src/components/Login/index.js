@@ -36,6 +36,7 @@ const Login = (props) => {
                 alert('Login Successful')
                 history.replace('/')
                 localStorage.setItem('userId',response.data.user._id)
+                localStorage.setItem('jwtToken',response.data.token)
             }
         } catch (error) {
           console.log(error)

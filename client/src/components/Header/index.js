@@ -16,6 +16,7 @@ const Header = (props) => {
             alert('Logout Successful')
             history.replace('/login')
             localStorage.removeItem('userId')
+            localStorage.removeItem('jwtToken')
         } catch (error) {
             console.log(error)
         }

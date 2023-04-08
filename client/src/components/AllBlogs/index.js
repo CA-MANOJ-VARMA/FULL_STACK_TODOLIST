@@ -8,7 +8,7 @@ const AllBlogs = (props) => {
   const [blogs,setBlogs] = useState([])
   const [count,setCount] = useState(0)
   const userId = localStorage.getItem('userId')
-
+  const jwtToken = localStorage.getItem('jwtToken')
   console.log('All Blogs')
 
   const blogFetch = async () =>{
@@ -35,7 +35,9 @@ const AllBlogs = (props) => {
   const deleteBlogFunction = async (id) =>{
     console.log('Delete')
     try {
-      const {data} = await axios.delete(`/api/v1/blog/delete-blog/${id}`)
+      const {data} = await axios.delete(`/api/v1/blog/delete-blog/${id}`,{headers: {
+        'authorization':`Bearer ${jwtToken}`
+    }})
       if(data.success){
         // const {history} = props
         alert('Blog Deleted Successfully')

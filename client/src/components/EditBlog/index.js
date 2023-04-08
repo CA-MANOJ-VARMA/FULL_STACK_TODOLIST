@@ -9,6 +9,7 @@ const EditBlog = (props) => {
         image:''
     })
     const userId = localStorage.getItem('userId')
+    const jwtToken = localStorage.getItem('jwtToken')
     const {match} = props
     const {params} = match
     const {id } = params
@@ -23,7 +24,9 @@ const EditBlog = (props) => {
 
     const getBlogById = async() =>{
         try {
-            const {data} = await axios.get(`/api/v1/blog/get-blog/${id}`)
+            const {data} = await axios.get(`/api/v1/blog/get-blog/${id}`,{headers: {
+                'authorization':`Bearer ${jwtToken}`
+            }})
             const {blog} = data
             // console.log(blog)
             setInputs({title:blog.title,description:blog.description,image:blog.image})
@@ -42,7 +45,9 @@ const EditBlog = (props) => {
 
         console.log(inputs) 
         try {
-            const response = await axios.put(`/api/v1/blog/update-blog/${id}` , {title:inputs.title,description:inputs.description, image:inputs.image,user:userId})
+            const response = await axios.put(`/api/v1/blog/update-blog/${id}` , {title:inputs.title,description:inputs.description, image:inputs.image,user:userId},{headers: {
+                'authorization':`Bearer ${jwtToken}`
+            }})
             console.log('top')
             console.log(response)
             console.log('bottom')

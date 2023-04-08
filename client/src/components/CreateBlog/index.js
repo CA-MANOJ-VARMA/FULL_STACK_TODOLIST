@@ -11,6 +11,8 @@ const CreateBlog = (props) => {
     })
     const [erroMsg,seterrorMsg]  =useState('')
     const userId = localStorage.getItem('userId')
+    const jwtToken = localStorage.getItem('jwtToken')
+    console.log(jwtToken)
     const eventChangeFunction = (event) => {
         setInputs(prevState => ({
             ...prevState,
@@ -23,7 +25,9 @@ const CreateBlog = (props) => {
         
         console.log(inputs) 
         try {
-            const response = await axios.post('/api/v1/blog/create-blog' , {title:inputs.title,description:inputs.description, image:inputs.image,user:userId})
+            const response = await axios.post('/api/v1/blog/create-blog' , {title:inputs.title,description:inputs.description, image:inputs.image,user:userId},{headers: {
+                'authorization':`Bearer ${jwtToken}`
+            }})
             console.log('top')
             console.log(response)
             console.log('bottom')
